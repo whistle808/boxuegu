@@ -24,7 +24,7 @@
                     <li class="active">讲师列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                    <a href="/view/teacher/manager" class="btn btn-success btn-sm pull-right">添加讲师</a>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -94,8 +94,12 @@
             <td>{{v.tc_cellphone}}</td>
             <td data-id="{{v.tc_id}}">
                 <a href="#teacherModal" data-toggle="modal" class="check-btn btn btn-info btn-xs">查 看</a>
-                <a href="/view/teacher/add.html" class="btn btn-info btn-xs">编 辑</a>
-                <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+                <a href="/teacher/manager?tc_id={{v.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
+                {{if v.tc_status==0}}
+                <a href="javascript:;" data-status="{{v.tc_status}}" class="btnHandle btn btn-warning btn-xs">注 销</a>
+                {{else}}
+                <a href="javascript:;" data-status="{{v.tc_status}}" class="btnHandle btn btn-warning btn-xs">启用</a>
+                {{/if}}
             </td>
         </tr>
         {{/each}}

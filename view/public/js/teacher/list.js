@@ -1,4 +1,5 @@
 define(["jquery", "template"], function ($, template) {
+    // 渲染教师列表
     $.ajax({
         url: '/api/teacher',
         type: 'get',
@@ -15,8 +16,8 @@ define(["jquery", "template"], function ($, template) {
             console.log("123");
         }
     })
-
-    $("#tc_list_tBody").on("click", ".check-btn", function () {
+//  查看每个讲师的信息
+    $("#tc_list_tBody").on("click","a.check-btn", function () {
         // alert("123");
         var id = $(this).parent().attr('data-id');
         $.ajax({
@@ -29,6 +30,27 @@ define(["jquery", "template"], function ($, template) {
                     $('#teacherModal tbody').html(htmlStr);
                     $('teacherModal').modal();
                 }
+            }
+        })
+    })
+
+    $("#tc_list_tBody").on("click","a.btnHandle",function(){
+        var id = $(this).parent().attr("data-id");
+        var _this = $(this);
+        $.ajax({
+            url:'/api/teacher/handle',
+            type:"post",
+            data:{
+                tc_id:id,
+                tc_status: _this.attr("data-status")
+            },
+            success:function(info){
+                if(info.result.tc_status==1){
+                    _this.text("启用");
+                }else{
+                    _this.text("注销");
+                }
+                _this.attr("data-status",info.result.tc_status);
             }
         })
     })
