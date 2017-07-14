@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+   <?php include '/view/common/css.html'?>
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <img src="/view/public/uploads/monkey.png" class="img-circle" alt="">
+            </div>
+            <form id="formId" class="col-md-offset-1 col-md-10">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input type="text" name="tc_name" class="form-control" placeholder="用户名" value="前端学院">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input type="password" name="tc_pass"  class="form-control" placeholder="密码" value="123456">
+                </div>
+                <button type="submit"class="btn btn-lg btn-primary btn-block">登 录</button>
+            </form>
+        </div>
+    </div>
+    
+    <?php include '/view/common/script.html'?>
+</body>
+</html>
+<script>
+   
+  require(["/view/public/js/login.js"]);
+
+
+
+
+
+
+
+
+
+
+
+
+    // $("#formId").submit(function(){
+    //     // 获取用户名和密码,发送请求
+    //     var data = $(this).serializeArray();
+    //     $.ajax({
+    //         url:'/api/login',
+    //         type:"post",
+    //         data:data,
+    //         success:function(info){
+    //             // console.log(info.code);
+    //             if(info.code == 200){
+    //                 // alert("登陆成功");
+    //                 location.href = "index";
+    //             }
+    //         },
+    //         error:function(errorInfo){
+    //             console.log('你输入的名字或者密码错误');
+    //         }
+    //     })
+    //     return false;
+    // })
+</script>
